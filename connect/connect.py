@@ -25,9 +25,9 @@ class Connect:
     _board: dict[tuple[int, int], Symbol] = field(default_factory=dict)
 
     def drop(self, player: Symbol, col: int) -> None:
-        if not 0 <= col < WIDTH:
+        if not 0 <= col < self.width:
             raise InvalidMove(f"Column {col} is out of range")
-        for row in reversed(range(HEIGHT)):
+        for row in reversed(range(self.height)):
             cell = row, col
             if cell not in self._board:
                 self._board[cell] = player
@@ -65,14 +65,14 @@ class Connect:
         return False
 
     def filled(self) -> bool:
-        return len(self._board) >= HEIGHT * WIDTH
+        return len(self._board) >= self.height * self.width
 
     def show(self) -> None:
-        line = ["_"] + [str(i) for i in range(WIDTH)]
+        line = ["_"] + [str(i) for i in range(self.width)]
         print("|".join(line))
-        for row in range(HEIGHT):
+        for row in range(self.height):
             line = [str(row)]
-            for col in range(WIDTH):
+            for col in range(self.width):
                 cell = row, col
                 line.append(self._board.get(cell) or "_")
             print("|".join(line))
