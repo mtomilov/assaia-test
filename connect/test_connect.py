@@ -5,7 +5,7 @@ from .connect import CONNECTIONS, Connect, InvalidMove, Symbol
 # TODO: add tests
 
 
-@pytest.mark.parametrize("player", list(Symbol))
+@pytest.mark.parametrize("player", Symbol)
 def test_win(player: Symbol) -> None:
     connect = Connect()
     for _ in range(CONNECTIONS):
@@ -14,7 +14,7 @@ def test_win(player: Symbol) -> None:
     assert connect.won()
 
 
-@pytest.mark.parametrize("player", list(Symbol))
+@pytest.mark.parametrize("player", Symbol)
 def test_not_win(player: Symbol) -> None:
     connect = Connect()
     for _ in range(CONNECTIONS - 1):
@@ -23,7 +23,7 @@ def test_not_win(player: Symbol) -> None:
     assert not connect.won()
 
 
-@pytest.mark.parametrize("player", list(Symbol))
+@pytest.mark.parametrize("player", Symbol)
 def test_invalid_move(player: Symbol) -> None:
     connect = Connect()
     with pytest.raises(InvalidMove):
