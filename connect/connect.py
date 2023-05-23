@@ -71,10 +71,9 @@ class Connect:
         line = ["_"] + [str(i) for i in range(self.width)]
         print("|".join(line))
         for row in range(self.height):
-            line = [str(row)]
-            for col in range(self.width):
-                cell = row, col
-                line.append(self._board.get(cell) or "_")
+            line = [str(row)] + [
+                self._board.get((row, col)) or "_" for col in range(self.width)
+            ]
             print("|".join(line))
 
 
