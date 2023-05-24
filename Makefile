@@ -8,7 +8,7 @@ test:
 	pytest connect
 
 upgrade-dev:
-	pip-compile --output-file=requirements-dev.txt --resolver=backtracking requirements-dev.in
+	pip-compile --output-file=requirements-dev.txt --resolver=backtracking requirements-dev.in --upgrade
 
 install-dev:
 	pip-sync requirements-dev.txt
