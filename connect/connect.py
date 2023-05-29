@@ -98,6 +98,7 @@ if __name__ == "__main__":
             print()
             break
         elif connect.filled():
+            connect.show()
             print("It's a draw!")
             print()
             break
